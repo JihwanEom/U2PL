@@ -1,7 +1,7 @@
 #!/bin/bash
 now=$(date +"%Y%m%d_%H%M%S")
 job='1464_semi'
-ROOT=../../../..
+ROOT=./
 
 mkdir -p log
 
@@ -12,4 +12,4 @@ python -m torch.distributed.launch \
     --node_rank=0 \
     --master_addr=localhost \
     --master_port=$2 \
-    $ROOT/train_semi.py --config=config.yaml --seed 2 --port $2 2>&1 | tee log/seg_$now.txt
+    $ROOT/train_semi.py --config=experiments/pascal/1464/ours/config.yaml --seed 2 --port $2 2>&1 | tee log/seg_$now.txt
